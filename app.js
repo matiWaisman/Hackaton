@@ -5,6 +5,7 @@ const usersRouter = require("./routes/users");
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -45,6 +46,18 @@ const start = async () => {
     console.log(error);
   }
 };
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+  app.get("*", (req, res) => {
+    const indexPath = path.join(__dirname, "client", "build", "index.html");
+    res.sendFile(indexPath);
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Api running");
+  });
+}
 
 const notFound = require("./middleware/notFound");
 app.use(notFound);
