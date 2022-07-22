@@ -1,0 +1,46 @@
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.img-logo {
+  width: 100%;
+  max-width: 40px;
+  height: auto;
+}
+
+img+h1 {
+  margin-left: 10px;
+}
+
+.golden {
+  background-color: #FFD700 !important;
+}
+
+.golden-text {
+  color: #FFD700 !important;
+  text-decoration: none;
+}
+
+.dropdown-toggle::after {
+  color: #FFD700 !important;
+}
+
+.fixed-height {
+  height: 80vh;
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  overflow: hidden;
+}
