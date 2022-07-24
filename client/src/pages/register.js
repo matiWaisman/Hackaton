@@ -29,22 +29,19 @@ const Register = () => {
   };
 
   const submitUser = async () => {
-    const rawResponse = await fetch(
-      "http://localhost:5000/api/v1/users/register",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formText.email,
-          password: formText.password,
-          password2: formText.password2,
-          name: formText.name,
-        }),
-      }
-    );
+    const rawResponse = await fetch("api/v1/users/register", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formText.email,
+        password: formText.password,
+        password2: formText.password2,
+        name: formText.name,
+      }),
+    });
     const content = await rawResponse.json();
     if (rawResponse.status === 401) {
       let errorsArray = [];

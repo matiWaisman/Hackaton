@@ -15,16 +15,13 @@ const Logout = (props) => {
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
-    const rawResponse = await fetch(
-      "http://localhost:5000/api/v1/users/logout",
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const rawResponse = await fetch("api/v1/users/logout", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
     const content = await rawResponse.json();
     if (content.msg === "Logged out") {
       setIsLogged(false);

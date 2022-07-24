@@ -11,7 +11,7 @@ import Hackaton from "./pages/hackaton";
 import PageFooter from "./components/pageFooter";
 
 function App() {
-  var url = "http://localhost:5000/api/v1/hackatons";
+  var url = "/api/v1/hackatons";
   const [hackatonsArray, setHackatonsArray] = useState([]);
   const [sortScores, setSortScores] = useState(false);
   const [hallOfFamePosition, setHallOfFamePosition] = useState();
@@ -25,9 +25,9 @@ function App() {
   }, [isLogged]);
 
   useEffect(() => {
-    url = "http://localhost:5000/api/v1/hackatons";
+    url = "/api/v1/hackatons";
     if (sortScores) {
-      url = "http://localhost:5000/api/v1/hackatons?sort=true";
+      url = "api/v1/hackatons?sort=true";
     }
     getHackatons(url);
   }, [sortScores]);

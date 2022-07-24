@@ -29,20 +29,17 @@ const Login = (props) => {
   };
 
   const checkUser = async () => {
-    const rawResponse = await fetch(
-      "http://localhost:5000/api/v1/users/login",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formText.email,
-          password: formText.password,
-        }),
-      }
-    );
+    const rawResponse = await fetch("/api/v1/users/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formText.email,
+        password: formText.password,
+      }),
+    });
     const content = await rawResponse.json();
     if (rawResponse.status === 401) {
       window.alert(content.message);
