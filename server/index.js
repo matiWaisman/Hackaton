@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const hackatonsRouter = require("./routes/hackatons");
 const usersRouter = require("./routes/users");
+const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
 const path = require("path");
@@ -29,13 +30,7 @@ app.use(passport.session());
 
 app.use(flash());
 
-app.use(
-  cors({
-    origin: ["https://deploy-mern-frontend.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/hackatons", hackatonsRouter);
@@ -54,7 +49,7 @@ const start = async () => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
   app.get("*", (req, res) => {
-    const indexPath = path.join(process.cwd(), "client", "build", "index.html");
+    const indexPath = path.join(__dirname, "client", "build", "index.html");
     res.sendFile(indexPath);
   });
 } else {
