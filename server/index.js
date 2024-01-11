@@ -2,12 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const hackatonsRouter = require("./routes/hackatons");
 const usersRouter = require("./routes/users");
-const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
 const path = require("path");
 
 const app = express();
+require("./config/passport-config")(passport);
 global.isLoggedIn = false; //I know this is VERY bad, but i can't connect the req.user with the express-sessions
 
 const connectDB = require("./db/connect");
