@@ -1,4 +1,4 @@
-const HackatonSchema = require("../server/models/hackaton");
+const HackatonSchema = require("../models/hackaton");
 
 const getHackatons = async (req, res) => {
   const { sort } = req.query;
