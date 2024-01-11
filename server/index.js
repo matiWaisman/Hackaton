@@ -64,7 +64,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const notFound = require("../middleware/notFound");
+const notFound = require("./middleware/notFound");
 app.use(notFound);
 
 start();
