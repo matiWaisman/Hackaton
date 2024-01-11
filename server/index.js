@@ -55,7 +55,7 @@ const start = async () => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
   app.get("*", (req, res) => {
-    const indexPath = path.join(__dirname, "client", "build", "index.html");
+    const indexPath = path.join(process.cwd(), "client", "build", "index.html");
     res.sendFile(indexPath);
   });
 } else {
