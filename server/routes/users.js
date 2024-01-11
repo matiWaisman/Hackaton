@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
-const initializePassport = require("../config/passport-config");
+const initializePassport = require("./config/passport-config");
 initializePassport(passport);
 
 const { postRegister } = require("../controllers/register");
